@@ -1,46 +1,81 @@
 /*login.cpp */
 
 #include <iostream>
-#include <istream>
-#include <fstream>
-#include <stdlib.h>
-#include <string.h>
+#include <string>
+#include <map>
 
 using namespace std;
 
-void login();
-void register();
+int main() {
+    string username;
+    string password;
+    string email;
+    string phoneNumber;
 
-int main()
-{
-int choice;
-cout << " *******LOGIN*******"
-cout << "1.Login";
-cout << "\n2.Register";
-cout << "\nEnter your choice:";
-cin >> choice;
+    map<string, string> users;
 
- switch(choice)
- {
-    case 1:
-    login();
-    break;
-    case 2:
-    register();
-    case 3:
-    cout << "Thanks for Login in\n ";
-    break;
-    default:
-    cout << "Please proceed to the next step"
-    main();
- }
-}
-void register()
-{
-    string ruser,rpass;
-    system("cls");
-    cout << "Enter the username:";
-    cin>>rguser
-    cout << "Enter the password:";
-    cin>>rpass
+    cout << "Welcome to E-commerce Store!" << endl;
+    cout << "Login and Register to use Store" << endl;
+
+    while (true) {
+        cout << "Please choose one of the following options: " << endl;
+        cout << "1. Login" << endl;
+        cout << "2. Register" << endl;
+        cout << "3. Exit" << endl;
+
+        int option;
+        cin >> option;
+
+        if (option == 1) {
+            // Login
+            cout << "Please enter your username: ";
+            cin >> username;
+
+            if (users.count(username) > 0) {
+                cout << "Please enter your password: ";
+                cin >> password;
+
+                if (users[username] == password) {
+                    cout << "You have successfully logged in!" << endl;
+                }
+                else {
+                    cout << "Incorrect password!" << endl;
+                }
+            }
+            else {
+                cout << "This username does not exist!" << endl;
+            }
+        }
+        else if (option == 2) {
+            // Register
+            cout << "Please enter a username: ";
+            cin >> username;
+
+            if (users.count(username) > 0) {
+                cout << "This username already exists!" << endl;
+            }
+            else {
+                cout << "Please enter a password: ";
+                cin >> password;
+
+                cout << "Please enter your email: ";
+                cin >> email;
+
+                cout << "Please enter your phone number: ";
+                cin >> phoneNumber;
+
+                users[username] = password;
+                cout << "You have successfully registered!" << endl;
+            }
+        }
+        else if (option == 3) {
+            // Exit
+            break;
+        }
+        else {
+            cout << "Invalid option!" << endl;
+        }
+    }
+
+    return 0;
 }
