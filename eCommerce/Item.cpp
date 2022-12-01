@@ -1,18 +1,11 @@
 #include "Item.h"
 
-Item::Item(const string& name="", const float& price=0)
+Item::Item(const string& name, const float& price)
 {
-    ID = objectCount[2]++;
     this->name = name;
     this->price = price;
 }
 
-Item::~Item() 
-{
-    objectCount[2]--;
-}
-
-int Item::getID() { return ID; }
 string Item::getName() { return name; }
 float Item::getPrice() { return price; }
 

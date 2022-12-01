@@ -1,22 +1,16 @@
 #include "Inventory.h"
 #include "Item.h"
 
-Inventory::Inventory(const map<Item*, int>& stock={}, const int& revenue)
+Inventory::Inventory(const map<Item*, int>& stock, const int& revenue)
 {
-    ID = objectCount[1]++;
     this->stock = stock;
     this->revenue = revenue;
-}
-
-Inventory::~Inventory()
-{
-    objectCount[1]--;
 }
 
 float Inventory::getRevenue() { return revenue; }
 void Inventory::setRevenue(const float& revenue) { this->revenue = revenue; }
 
-bool Inventory::add(const string& name, const int& quantity=1, const float& price=-1)
+bool Inventory::add(const string& name, const int& quantity, const float& price)
 {
     // similar to add function for shoppingcart, starting with searching within stock for the item
     for (map<Item*, int>::iterator iter = stock.begin(); iter != stock.end(); iter++) {
@@ -35,7 +29,7 @@ bool Inventory::add(const string& name, const int& quantity=1, const float& pric
     return true;
 }
 
-bool Inventory::remove(const string& name, const int& quantity=1)
+bool Inventory::remove(const string& name, const int& quantity)
 {
     // look for item in stock
     for (map<Item*, int>::iterator iter = stock.begin(); iter != stock.end(); iter++) {
@@ -47,5 +41,3 @@ bool Inventory::remove(const string& name, const int& quantity=1)
         }
     }
 }
-
-int Inventory::getID() { return ID; }

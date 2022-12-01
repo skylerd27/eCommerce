@@ -1,18 +1,10 @@
 #include "ShoppingCart.h"
 #include <iostream>
 
-ShoppingCart::ShoppingCart(const map<Item*, int>& items={})
+ShoppingCart::ShoppingCart(const map<Item*, int>& items)
 {
-    ID = objectCount[3]++;
     this->items = items;
 }
-
-ShoppingCart::~ShoppingCart()
-{
-    objectCount[3]--;
-}
-
-int ShoppingCart::getID() { return ID; }
 
 bool ShoppingCart::display(ostream& os)
 {
@@ -24,7 +16,7 @@ bool ShoppingCart::display(ostream& os)
     return true;
 }
 
-bool ShoppingCart::add(const string& name, const int& quantity=1)
+bool ShoppingCart::add(const string& name, const int& quantity)
 {
     // find item with given name in inventory (only works if name is unique)
     map<Item*, int>::iterator founditer, founditer2;
@@ -63,7 +55,7 @@ bool ShoppingCart::add(const string& name, const int& quantity=1)
     return false;
 }
 
-bool ShoppingCart::remove(const string& name, const int& quantity=1)
+bool ShoppingCart::remove(const string& name, const int& quantity)
 {
     // find item with given name in cart
     map<Item*, int>::iterator founditer;
@@ -100,9 +92,4 @@ bool ShoppingCart::setShelf(Inventory* shelf)
         return true;
     }
     return false;
-}
-
-int ShoppingCart::getShelfID()
-{
-    return shelf->getID();
 }
