@@ -1,7 +1,7 @@
 #include "Customer.h"
 
 Customer::Customer(const string& name, const string& phone, const string& email, const string& password,
-                    const string& address, const string& payment, const vector<string>& last)
+                    const string& address, const string& payment, const string& last)
 {
     this->name = name;
     this->phone = phone;

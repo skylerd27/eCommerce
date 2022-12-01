@@ -1,7 +1,7 @@
 #include "Inventory.h"
 #include "Item.h"
 
-Inventory::Inventory(const map<Item*, int>& stock, const int& revenue)
+Inventory::Inventory(const map<Item*, int>& stock, const float& revenue)
 {
     this->stock = stock;
     this->revenue = revenue;
